@@ -184,7 +184,7 @@ class IndexedRegion extends TransactionalRegion {
         return neededColumns;
     }
 
-    private Delete makeDeleteToRemoveOldIndexEntry(final IndexSpecification indexSpec, final byte[] row,
+    protected Delete makeDeleteToRemoveOldIndexEntry(final IndexSpecification indexSpec, final byte[] row,
             final SortedMap<byte[], byte[]> oldColumnValues) throws IOException {
         for (byte[] indexedCol : indexSpec.getIndexedColumns()) {
             if (!oldColumnValues.containsKey(indexedCol)) {
@@ -227,7 +227,7 @@ class IndexedRegion extends TransactionalRegion {
         return false;
     }
 
-    private Put makeIndexUpdate(final IndexSpecification indexSpec, final byte[] row,
+    protected Put makeIndexUpdate(final IndexSpecification indexSpec, final byte[] row,
             final SortedMap<byte[], byte[]> columnValues) throws IOException {
         Put indexUpdate = IndexMaintenanceUtils.createIndexUpdate(indexSpec, row, columnValues);
         LOG.debug("Index [" + indexSpec.getIndexId() + "] adding new entry [" + Bytes.toString(indexUpdate.getRow())

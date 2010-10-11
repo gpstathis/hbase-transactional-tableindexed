@@ -41,8 +41,8 @@ public class IndexedTable extends TransactionalTable {
 
     static final Log LOG = LogFactory.getLog(IndexedTable.class);
 
-    private final IndexedTableDescriptor indexedTableDescriptor;
-    private Map<String, HTable> indexIdToTable = new HashMap<String, HTable>();
+    protected final IndexedTableDescriptor indexedTableDescriptor;
+    protected Map<String, HTable> indexIdToTable = new HashMap<String, HTable>();
 
     public IndexedTable(final Configuration conf, final byte[] tableName) throws IOException {
         super(conf, tableName);
@@ -110,7 +110,7 @@ public class IndexedTable extends TransactionalTable {
         return new ScannerWrapper(indexScanner, baseColumns);
     }
 
-    private void verifyIndexColumns(final byte[][] requestedColumns, final IndexSpecification indexSpec) {
+    protected void verifyIndexColumns(final byte[][] requestedColumns, final IndexSpecification indexSpec) {
         if (requestedColumns == null) {
             return;
         }

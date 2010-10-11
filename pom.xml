@@ -5,12 +5,20 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.apache</groupId>
 	<artifactId>hbase-trx</artifactId>
-	<version>0.89.0-DEV-1</version>
+	<version>0.89.0-DEV-1-RowBased</version>
 	<packaging>jar</packaging>
 	<name>hbase-trx</name>
 	<description>transactional/indexing layers on top of hbase</description>
 	
 	<properties>
+		<!-- 
+			Obtain this version of HBase from GitHub:
+			- git clone git://github.com/jameskennedy/hbase.git hbase-src-0.89.20100726-withHLogSplit
+			- cd hbase-src-0.89.20100726-withHLogSplit
+			- git checkout -b HLogSplit_0.89.20100726 origin/HLogSplit_0.89.20100726
+			Now you are on the HLogSplit_0.89.20100726 branch.
+			- mvn assembly:assembly (use -DskipTests=true for faster builds) 
+		-->
 		<hbase.version>0.89.20100726-withHLogSplit</hbase.version>
 		<hadoop.version>0.20.3-append-r964955-1240</hadoop.version>
 	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
